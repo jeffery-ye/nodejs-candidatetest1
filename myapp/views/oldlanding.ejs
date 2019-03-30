@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <% include common/head %>
+</head>
+
+<body class="container">
+
+    <header>
+        <% if (user) { %>
+            <% include common/navbar %>
+        <% } else { %>
+            <% include common/navbar_noleads %>
+        <% } %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h1>This is great</h1>
+            <p>Welcome to templating using EJS</p>
+
+
+
+        </div>
+
+        <form action="/" , method="POST">
+            <input name="lead_email" , type="email" , placeholder="Enter your email address" />
+            <button type="submit">Get Started</button>
+        </form>
+
+
+
+        <% if (user) { %>
+        <p><%= user.email %></p>
+        <% } %>
+
+
+    </main>
+
+
+
+    <footer class="footer">
+        <% include common/footer %>
+    </footer>
+
+</body>
+
+
+</html>

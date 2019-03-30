@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../common/head %>
+</head>
+
+<body class="container">
+
+  <header>      
+        <% include ../common/navbar_noleads %>    
+  </header>
+
+  <main>
+    <div class="jumbotron">
+      <form action='/login' , method='POST'>
+        <table>
+          <tr>
+            <td>Email:</td>
+            <td>
+              <input placeholder='Please enter your email' , required=true, name='email' , type='email' ,
+                value='' />
+              <% if (errors && errors.email) %>
+              <%= errors.email %>
+            </td>
+          </tr>
+          <tr>
+            <td>Password: </td>
+            <td>
+              <input placeholder='Please Enter your Current Password' ,required=true, name='password' , type='password' />
+              <% if (errors && errors.password) %>
+              <%= errors.password %>
+              <button type='submit'> Log In </button>
+              Don't have an account? <a href="/signup"> Sign Up here.</a>
+              | Forgot your password? <a href="#"> Reset here.</a>
+
+            </td>
+          </tr>
+        </table>
+      </form>
+
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <% include ../common/footer %>
+  </footer>
+
+</body>
+
+</html>
