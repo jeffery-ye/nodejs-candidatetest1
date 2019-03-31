@@ -15,6 +15,10 @@ router.post('/signup', user.signup);
 router.post('/logout', user.logout);
 router.get('/logout', user.logout);
 
+
+router.get('/usersearch', user.search_user);
+
+
 /* postgres query. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');

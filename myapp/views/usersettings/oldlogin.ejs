@@ -7,8 +7,8 @@
 
 <body class="container">
 
-  <header>      
-        <% include ../common/navbar_noleads %>    
+  <header>
+    <% include ../common/navbar_noleads %>
   </header>
 
   <main>
@@ -18,8 +18,7 @@
           <tr>
             <td>Email:</td>
             <td>
-              <input placeholder='Please enter your email' , required=true, name='email' , type='email' ,
-                value='' />
+              <input placeholder='Please enter your email' , required=true, name='email' , type='email' , value='' />
               <% if (errors && errors.email) %>
               <%= errors.email %>
             </td>
@@ -27,7 +26,8 @@
           <tr>
             <td>Password: </td>
             <td>
-              <input placeholder='Please Enter your Current Password' ,required=true, name='password' , type='password' />
+              <input placeholder='Please Enter your Current Password' ,required=true, name='password' ,
+                type='password' />
               <% if (errors && errors.password) %>
               <%= errors.password %>
               <button type='submit'> Log In </button>

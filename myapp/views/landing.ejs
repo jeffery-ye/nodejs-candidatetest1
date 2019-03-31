@@ -2,23 +2,24 @@
 <html lang="en">
 
 <head>
-<% include common/head %>
+    <% include common/head %>
 </head>
 
 <body id="reportsPage">
     <div class="" id="home">
         <nav class="navbar navbar-expand-xl">
-            <% if (user) { %> 
-                <% include common/navbar %>
+            <% if (user) { %>
+            <% include common/navbar %>
             <% } else { %>
-                <% include common/navbar_noleads %>
+            <% include common/navbar_noleads %>
             <% } %>
         </nav>
         <div class="container">
             <div class="row">
 
                 <div class="col">
-                    <p class="text-white mt-5 mb-5" style="text-align: right;">Welcome <% if (user) { %> <%= user.email %> <% } else { %> guest <% } %></p>
+                    <p class="text-white mt-5 mb-5" style="text-align: right;">Welcome <% if (user) { %>
+                        <%= user.email %> <% } else { %> guest <% } %></p>
                 </div>
             </div>
 
@@ -26,6 +27,7 @@
             <div class="row tm-content-row">
 
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                    <% if (user) { %>
                     <div class="tm-bg-primary-dark tm-block">
                         <h2 class="tm-block-title">Submit Lead</h2>
                         <form action="/" , method="POST">
@@ -33,6 +35,7 @@
                             <button type="submit">Get Started</button>
                         </form>
                     </div>
+                    <% } else { %> <% include common/notification_list %> <% } %>
                 </div>
 
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
@@ -41,6 +44,7 @@
                     </div>
                 </div>
 
+                <!--
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block tm-block-taller">
                         <h2 class="tm-block-title">Storage Information</h2>
@@ -49,122 +53,44 @@
                         </div>
                     </div>
                 </div>
+-->
 
+                <% include common/notification_list %>
 
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
-                        <h2 class="tm-block-title">Notification List</h2>
-                        <div class="tm-notification-items">
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="/images/notification-01.jpg" alt="Avatar Image"
-                                        class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Jessica</b> and <b>6 others</b> sent you new <a href="#"
-                                            class="tm-notification-link">product updates</a>. Check new orders.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="/images/notification-02.jpg" alt="Avatar Image"
-                                        class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Oliver Too</b> and <b>6 others</b> sent you existing <a href="#"
-                                            class="tm-notification-link">product updates</a>. Read more reports.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="/images/notification-03.jpg" alt="Avatar Image"
-                                        class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Victoria</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">order updates</a>. Read order information.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="/images/notification-01.jpg" alt="Avatar Image"
-                                        class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Laura Cute</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">product records</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="/images/notification-02.jpg" alt="Avatar Image"
-                                        class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Samantha</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">order stuffs</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="/images/notification-03.jpg" alt="Avatar Image"
-                                        class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Sophie</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">product updates</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="/images/notification-01.jpg" alt="Avatar Image"
-                                        class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Lily A</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">product updates</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="/images/notification-02.jpg" alt="Avatar Image"
-                                        class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Amara</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">product updates</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
             </div>
 
 
-        <footer class="tm-footer row tm-mt-small">
-                <% include common/footer %> 
-        </footer>
+            <footer class="tm-footer row tm-mt-small">
+                <% include common/footer %>
+            </footer>
 
 
 
-        <script>
-            Chart.defaults.global.defaultFontColor = 'white';
-            let ctxLine,
-                ctxBar,
-                ctxPie,
-                optionsLine,
-                optionsBar,
-                optionsPie,
-                configLine,
-                configBar,
-                configPie,
-                lineChart;
-            barChart, pieChart;
-            // DOM is ready
-            $(function () {
-                drawLineChart(); // Line Chart
-                drawBarChart(); // Bar Chart
-                drawPieChart(); // Pie Chart
+            <script>
+                Chart.defaults.global.defaultFontColor = 'white';
+                let ctxLine,
+                    ctxBar,
+                    ctxPie,
+                    optionsLine,
+                    optionsBar,
+                    optionsPie,
+                    configLine,
+                    configBar,
+                    configPie,
+                    lineChart;
+                barChart, pieChart;
+                // DOM is ready
+                $(function () {
+                    drawLineChart(); // Line Chart
+                    drawBarChart(); // Bar Chart
+                    drawPieChart(); // Pie Chart
 
-                $(window).resize(function () {
-                    updateLineChart();
-                    updateBarChart();
-                });
-            })
-        </script>
+                    $(window).resize(function () {
+                        updateLineChart();
+                        updateBarChart();
+                    });
+                })
+            </script>
 </body>
 
 </html>

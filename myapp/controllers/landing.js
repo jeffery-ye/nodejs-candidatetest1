@@ -14,7 +14,7 @@ exports.submit_lead = function (req, res, next) {
 	return models.Lead.create({
 		email: req.body.lead_email
 	}).then(lead => {
-		res.redirect('/leads', { user: req.user });
+		res.redirect('/leads');
 	})
 }
 
@@ -53,7 +53,7 @@ exports.edit_lead = function (req, res, next) {
 				id: req.params.lead_id
 			}
 		}).then(result => {
-			res.redirect('/lead/' + req.params.lead_id, { user: req.user });
+			res.redirect('/lead/' + req.params.lead_id);
 		})
 }
 exports.delete_lead = function (req, res, next) {
@@ -62,7 +62,7 @@ exports.delete_lead = function (req, res, next) {
 			id: req.params.lead_id
 		}
 	}).then(result => {
-		res.redirect('/leads', { user: req.user });
+		res.redirect('/leads');
 	})
 }
 

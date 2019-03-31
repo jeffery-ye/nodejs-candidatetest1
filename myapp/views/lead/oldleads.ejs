@@ -1,60 +1,60 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  
-<head>
-    <% include ../common/head %>
-  </head>
 
-  <body id="reportsPage">
-    <div class="" id="home">
-      <nav class="navbar navbar-expand-xl">
-       <% include ../common/navbar %>
-      </nav>
-    </div>
+<head>
+  <% include ../common/head %>
+</head>
+
+<body id="reportsPage">
+  <div class="" id="home">
+    <nav class="navbar navbar-expand-xl">
+      <% include ../common/navbar %>
+    </nav>
+  </div>
 
 
   <div class="container">
-          
-                  
-    <h1>Leads</h1>   
+
+
+    <h1>Leads</h1>
     <p>Welcome <%= user.email %></p>
-    
-        <table>
-          <tr>
-            <th scope="col">Email</th>
-            <th scope="col">Actions</th>
-            <th scope="col"></th>
-          </tr>
-    
-    
-          <% for (var i= 0; i<leads.length; i++) { %>
-          <tr id=<%= leads[i].id %>>
-            <td><%= leads[i].email %></td>
-            <td><a href="/lead/<%= leads[i].id %>"> Details </a> </td>
-            <td>
-              <button onclick='deleteLead("<%= leads[i].id %>")'> Delete </button>
-            </td>
-    
-          </tr>
-    
-          <% } %>
-    
-    
-    
-    
-        </table>
 
-            </div>
-          
+    <table>
+      <tr>
+        <th scope="col">Email</th>
+        <th scope="col">Actions</th>
+        <th scope="col"></th>
+      </tr>
 
 
-    <script src='/javascripts/leads.js'></script>
-    <script src="/javascripts/jquery-3.3.1.min.js"></script>
-    <!-- https://jquery.com/download/ -->
-    <script src="/javascripts/bootstrap.min.js"></script>
-    <!-- https://getbootstrap.com/ -->
-  </body>
+      <% for (var i= 0; i<leads.length; i++) { %>
+      <tr id=<%= leads[i].id %>>
+        <td><%= leads[i].email %></td>
+        <td><a href="/lead/<%= leads[i].id %>"> Details </a> </td>
+        <td>
+          <button onclick='deleteLead("<%= leads[i].id %>")'> Delete </button>
+        </td>
+
+      </tr>
+
+      <% } %>
+
+
+
+
+    </table>
+
+  </div>
+
+
+
+  <script src='/javascripts/leads.js'></script>
+  <script src="/javascripts/jquery-3.3.1.min.js"></script>
+  <!-- https://jquery.com/download/ -->
+  <script src="/javascripts/bootstrap.min.js"></script>
+  <!-- https://getbootstrap.com/ -->
+</body>
+
 </html>
 
 <!--

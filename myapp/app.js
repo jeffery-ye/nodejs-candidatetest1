@@ -40,11 +40,14 @@ app.set('view engine', 'ejs');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var postgresRouter = require('./routes/postgres');
+//var siyuanRouter = require('./routes/siyuan');
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/postgres', postgresRouter);
 
+//app.use('/siyuan', siyuanRouter);
 
 //mysql connection 
 
@@ -59,8 +62,6 @@ const pool = mysql.createPool({
 function getConnection() {
   return pool
 }
-
-
 
 
 // catch 404 and forward to error handler

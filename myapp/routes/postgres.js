@@ -24,7 +24,7 @@ router.get('/usersearch', postgres.search_user);
 
 
 router.post('/createuseroutput', postgres.user_created);
-  
+
 
 router.post('/usersearchresults', postgres.search_results);
 
