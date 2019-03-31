@@ -6,9 +6,13 @@
 
 <body>
   <div>
-    <nav class="navbar navbar-expand-xl">
-      <% include ../common/navbar %>
-    </nav>
+      <nav class="navbar navbar-expand-xl">
+          <% if (user) { %> 
+              <% include ../common/navbar %>
+          <% } else { %>
+              <% include ../common/navbar_noleads %>
+          <% } %>
+      </nav>
 
   </div>
 

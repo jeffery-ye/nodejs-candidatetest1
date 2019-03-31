@@ -5,28 +5,32 @@
     <% include ../common/head %>
 </head>
 
+
 <body>
+  <div>
+      <nav class="navbar navbar-expand-xl">
+          <% if (user) { %> 
+              <% include ../common/navbar %>
+          <% } else { %>
+              <% include ../common/navbar_noleads %>
+          <% } %>
+      </nav>
+  </div>
 
-<div class="container">
+  <div class="container tm-mt-big tm-mb-big">
+    <div class="row">
+    <h1>Edit Lead:</h1> 
+    </div>
 
-  <header>
-      <% if (user) { %>
-        <% include ../common/navbar %>
-    <% } else { %>
-        <% include ../common/navbar_noleads %>
-    <% } %>
-  </header>
-
-
-  <main>
-    <h1>Edit Lead:</h1>
-    <div class="jumbotron">
+    <div class="row">
+    
       <form action="/lead/<%= lead.id %>/edit", method="POST">
         <input name="lead_email" , type="email" , value=<%= lead.email %> />
         <button class="btn btn-primary" type="submit">Submit</button>
       </form>
     </div>
-  </main>
+  </div>
+  
 
 
   <footer class="tm-footer row tm-mt-small">

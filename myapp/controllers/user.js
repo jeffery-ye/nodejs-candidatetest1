@@ -8,15 +8,15 @@ const {isEmpty} = require('lodash');
 const { validateUser } = require('../validators/signup');
 
 exports.show_login = function(req, res, next) {
-	res.render('user/login', { formData: {}, errors: {} });
+	res.render('user/login', { formData: {}, errors: {}, user: req.user });
 }
 
 exports.show_signup = function(req, res, next) {
-	res.render('user/signup', { formData: {}, errors: {} });
+	res.render('user/signup', { formData: {}, errors: {} , user: req.user});
 }
 
 const rerender_signup = function(errors, req, res, next) {
-	res.render('user/signup', { formData: req.body, errors: errors});
+	res.render('user/signup', { formData: req.body, errors: errors, user: req.user});
 }
 const generateHash = function(password) {
 	return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)

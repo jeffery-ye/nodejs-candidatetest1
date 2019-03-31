@@ -5,15 +5,23 @@
   <% include ../common/head %>
 </head>
 
-<body class="container">
+<body>
 
-  <header>     
-        <% include ../common/navbar_noleads %>   
-  </header>
+<div class="" id="home">
+        <div class="container">
+<div>
+    <nav class="navbar navbar-expand-xl">
+        <% if (user) { %> 
+            <% include ../common/navbar %>
+        <% } else { %>
+            <% include ../common/navbar_noleads %>
+        <% } %>
+    </nav>
+</div>
 
-  <main>
-    <div class="jumbotron">
-      <form action='/signup' , method='POST'>
+<div class="container tm-mt-big tm-mb-big">
+  <div class="row">
+      <form action='/users/signup' , method='POST'>
         <table>
           <tr>
             <td>Email:</td>
@@ -37,13 +45,15 @@
       </form>
 
     </div>
-  </main>
+</div>
+
 
 
   <footer class="tm-footer row tm-mt-small">
 <% include ../common/footer %>
 </footer>
-
+</div>
+</div>
 </body>
 
 </html>

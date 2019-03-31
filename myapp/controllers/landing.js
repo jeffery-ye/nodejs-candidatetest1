@@ -1,8 +1,11 @@
 
 const models = require('../models')
 
+let {isLoggedIn, hasAuth} = require('../middleware/hasAuth.js')
+
+
 exports.get_landing = function (req, res, next) {
-	res.render('landing', { title: 'Express', user: req.user });
+	res.render('landing', { title: 'Express', user: req.user, isLoggedIn: isLoggedIn});
 }
 
 
@@ -11,7 +14,7 @@ exports.submit_lead = function (req, res, next) {
 	return models.Lead.create({
 		email: req.body.lead_email
 	}).then(lead => {
-		res.redirect('/leads');
+		res.redirect('/leads', { user: req.user });
 	})
 }
 
@@ -27,7 +30,7 @@ exports.show_lead = function (req, res, next) {
 			id: req.params.lead_id
 		}
 	}).then(lead => {
-		res.render('lead/lead', { lead: lead });
+		res.render('lead/lead', { lead: lead , user: req.user});
 	});
 }
 
@@ -37,7 +40,7 @@ exports.show_edit_lead = function (req, res, next) {
 			id: req.params.lead_id
 		}
 	}).then(lead => {
-		res.render('lead/edit_lead', { lead: lead });
+		res.render('lead/edit_lead', { lead: lead, user: req.user });
 	});
 }
 
@@ -50,7 +53,7 @@ exports.edit_lead = function (req, res, next) {
 				id: req.params.lead_id
 			}
 		}).then(result => {
-			res.redirect('/lead/' + req.params.lead_id);
+			res.redirect('/lead/' + req.params.lead_id, { user: req.user });
 		})
 }
 exports.delete_lead = function (req, res, next) {
@@ -59,7 +62,7 @@ exports.delete_lead = function (req, res, next) {
 			id: req.params.lead_id
 		}
 	}).then(result => {
-		res.redirect('/leads');
+		res.redirect('/leads', { user: req.user });
 	})
 }
 

@@ -6,12 +6,15 @@ let user = require('../controllers/user');
 
 let {isLoggedIn, hasAuth} = require('../middleware/hasAuth.js')
 
+/*
 router.get('/login', user.show_login);
 router.get('/signup', user.show_signup);
 router.post('/login', user.login);
 router.post('/signup', user.signup);
 router.post('/logout', user.logout);
 router.get('/logout', user.logout);
+*/
+
 router.get('/default', )
 /* GET home page. */
 router.get('/', landing.get_landing);
