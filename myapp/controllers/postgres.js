@@ -78,44 +78,49 @@ exports.insert_course = function (req, res, next) {
     const period = req.body.period
     const coursename = req.body.coursename
     const username = req.user.email
-    
-    const sql1 = "SELECT * FROM courseschedule WHERE username = $1 and daytype = $2 and period = $3"
-    pgpool.query(sql1, [username, daytype, period], (err, rows) => {
-        if (err) {            
+    const sql_return_course = "SELECT * FROM courseschedule WHERE username = $1"
+    const sql_insert = "INSERT INTO courseschedule (daytype, period, coursename, username) values ($1,$2, $3, $4)"
+    const sql_check_exist = "SELECT * FROM courseschedule WHERE username = $1 and daytype = $2 and period = $3"
+    const sql_update = "update courseschedule set coursename = $1 where daytype  = $2 and period = $3"
+    pgpool.query(sql_check_exist, [username, daytype, period], (err, rows) => {
+        if (err) {
             console.log("Failed to find user")
             return
         }
-        console.log("user name --- " , rows.rows)
-        if (rows.rows) {
-            console.log("user name ---------- " , rows.rows)
-            //console.log("rows.rows", rows.rows.period)
-           pgpool.query('update courseschedule set coursename = $1 where daytype  = $2 and period = $3', [coursename, daytype, period], (err, rows) => {
+        console.log("user name --- ", rows.rows)
+        if (rows && rows.rows.length > 0) {
+            console.log("user name ---------- " + rows.rows)
+            pgpool.query(sql_update, [coursename, daytype, period], (err, rows) => {
                 if (err) {
-                   console.log("Update Failed")
-                   return
-               }
-            res.render('postgres/createcourse', { courses: rows.rows, user: req.user });
-            })            
-        }        
-       else {           
-        const sql2 = "INSERT INTO courseschedule (daytype, period, coursename, username) values ($1,$2, $3, $4)"
-        pgpool.query(sql2, [daytype, period, coursename, username], (err, rows) => {
-            if (err) {
-                console.log(err)
-                return
-            }    
-            const sql = "SELECT * FROM courseschedule WHERE username = $1"
-            pgpool.query(sql, [username], (err, rows) => {
-                if (err) {                        
-                    console.log("Failed to find user")
+                    console.log("Update Failed")
                     return
                 }
-                //res.status(200).json(rows.rows)
-                //console.log(rows.rows)
-                res.render('postgres/createcourse', { courses: rows.rows, user: req.user });
-            })              
-        })
-        }   
+                pgpool.query(sql_return_course, [username], (err, rows) => {
+                    if (err) {
+                        console.log("Failed to find user")
+                        return
+                    }
+
+                    res.render('postgres/createcourse', { courses: rows.rows, user: req.user });
+                })
+            })
+        }
+        else {
+            pgpool.query(sql_insert, [daytype, period, coursename, username], (err, rows) => {
+                if (err) {
+                    console.log(err)
+                    return
+                }
+                pgpool.query(sql_return_course, [username], (err, rows) => {
+                    if (err) {
+                        console.log("Failed to find user")
+                        return
+                    }
+                    
+                    res.render('postgres/createcourse', { courses: rows.rows, user: req.user });
+                })
+            })
+        }
     })
 
 }

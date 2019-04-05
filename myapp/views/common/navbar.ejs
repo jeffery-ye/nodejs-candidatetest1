@@ -39,11 +39,18 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="/">
-                    <i class="far fa-user"></i>
-                    Placeholder
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-cog"></i>
+                    <span>
+                        Scheduling <i class="fas fa-angle-down"></i>
+                    </span>
                 </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/postgres/coursesearch">Course Search</a>
+                    <a class="dropdown-item" href="/postgres/createcourse">Course Create</a>
+                </div>
             </li>
 
 
@@ -52,14 +59,12 @@
                     aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-cog"></i>
                     <span>
-                        Users Settings <i class="fas fa-angle-down"></i>
+                        User Settings  <i class="fas fa-angle-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/postgres/createnewuser">Create new user</a>
                     <a class="dropdown-item" href="/postgres/usersearch">User search</a>
-                    <a class="dropdown-item" href="/postgres/coursesearch">Course Search</a>
-                    <a class="dropdown-item" href="/postgres/createcourse">Schedule Create</a>
                 </div>
             </li>
         </ul>
