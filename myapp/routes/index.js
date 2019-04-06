@@ -19,6 +19,7 @@ router.get('/default', )
 /* GET home page. */
 router.get('/', landing.get_landing);
 router.post('/', landing.submit_lead);
+
 router.get('/leads', hasAuth, landing.show_leads);
 router.get('/lead/:lead_id', hasAuth, landing.show_lead);
 router.get('/lead/:lead_id/edit', hasAuth, landing.show_edit_lead);

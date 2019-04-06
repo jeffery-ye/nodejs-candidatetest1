@@ -151,3 +151,43 @@ exports.course_list = function (req, res, next) {
         res.render('postgres/courselist', { courses: rows.rows, user: req.user })
     })
 }
+
+
+
+exports.course_edit = function (req, res, next) {
+    const courseid = req.body.courseid
+    console.log("courseid", courseid)
+    const sql = "SELECT * FROM courseschedule WHERE id = $1"
+    pgpool.query(sql, [courseid], (err, rows) => {
+        if (err) {
+            //sendstatus(500)
+            console.log("Failed to find user")
+            return
+        }
+        console.log(rows.rows)
+        res.render('postgres/editcourse', { courses: rows.rows, user: req.user });
+    })
+}
+
+
+exports.course_delete = function (req, res, next) {
+    const courseid = req.body.courseid
+    console.log("courseid", courseid)
+    const sql_delete = "DELETE FROM courseschedule WHERE id = $1"
+    pgpool.query(sql_delete, [courseid], (err, rows) => {
+        if (err) {
+            console.log("Failed to find user")
+            return
+        }  
+    })
+    
+    const sql_query = "SELECT * FROM courseschedule WHERE id = $1"
+    pgpool.query(sql_query, [courseid], (err, rows) => {
+        if (err) {
+            console.log("Failed to find user")
+            return
+        }
+        console.log(rows.rows)
+        res.render('postgres/createcourse', { courses: rows.rows, user: req.user });
+    })
+}

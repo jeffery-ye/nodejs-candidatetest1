@@ -44,15 +44,12 @@
                             <td>
                                 <form action="/postgres/courseedit" , method="POST">
 
-                                    <input type="hidden" value=<%= courses[i].id %> name="courseid"></input>
-                                    <button class="btn-sm btn-info" type="submit">Edit</button>
+                                    <input class="btn-sm btn-info" type = "hidden" value=<%= courses[i].id %>
+                                        name="courseid"></input>
+                                        <button class="btn btn-primary" type="submit">Edit</button>
                                 </form>
                             </td>
-                            <td>
-                                <form action = "/postgres/coursedelete" method = "POST">
-                                    <input type="hidden" value=<%= courses[i].id %> name="courseid"></input>
-                                    <button class="btn-sm btn-danger" type = "submit">Delete</button>
-                                </form>
+                            <td><button type="button" class="btn-sm btn-danger">Delete</button>
                             </td>
                         </tr>
                         <% } %>
@@ -63,12 +60,12 @@
                 <div class="row align-items-center">
                     <form action='/postgres/createcourse' method='POST'>
                         <h5>Day Color</h5>
-                        <input type='text' placeholder="Day Color" name='daytype' required />
+                        <input type='text' value = <%= courses[0].daytype %> name='daytype' required /> 
                         <h5>Period</h5>
-                        <input type='text' placeholder="Period" name='period' required />
+                        <input type='text' value = <%= courses[0].period %> name='period' required />
                         <h5>Class Name</h5>
-                        <input type='text' placeholder="Course Name" name='coursename' required />
-                        <button type='submit'>Create Schedule</button>
+                        <input type='text' value = <%= courses[0].coursename %> name='coursename' required />
+                        <button type='submit'>Update Schedule</button>
                     </form>
 
                 </div>

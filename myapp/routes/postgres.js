@@ -13,6 +13,9 @@ router.post('/courselist', postgres.course_list);
 router.get('/createcourse', postgres.create_course)
 router.post('/createcourse', postgres.insert_course)
 
+router.post('/courseedit', postgres.course_edit)
+router.post('/coursedelete', postgres.course_delete)
+
 //Users
 
 router.get('/createnewuser', postgres.create_user);
